@@ -215,7 +215,8 @@ class DCGAN_G(nn.Module):
         super().__init__()
         assert isize % 16 == 0, "isize has to be a multiple of 16"
 
-        cngf, tisize = ngf//2, 4
+        #cngf, tisize = ngf//2, 4
+        cngf, tisize = ngf//2, 16 # RG 9.13 reducing size of network
         while tisize!=isize: cngf*=2; tisize*=2
         layers = [DeconvBlock(nz, cngf, 4, 1, 0)]
 
